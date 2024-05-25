@@ -1,0 +1,1 @@
+<img src="{{ asset($product['feature_image']) }}" class="rounded mx-auto d-block" style="width: 50px" alt="{{ __('Ảnh bài viết') }}">

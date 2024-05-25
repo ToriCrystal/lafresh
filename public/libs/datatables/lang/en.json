@@ -1,0 +1,17 @@
+{
+    "processing": "Loading...",
+    "emptyTable": "Not found data !",
+    "info": "Show _START_ to _END_ of _TOTAL_ entries",
+    "infoEmpty": "Show 0 to 0 of 0 entries",
+    "infoFiltered": "(filtered from _TOTAL_ total entries)",
+    "lengthMenu": "Show _MENU_ entries",
+    "search": "Search",
+    "searchPlaceholder": "Search",
+    "zeroRecords": "No matching records found !",
+    "paginate": {
+        "first": "First",
+        "last": "Last",
+        "next": "<i class='ti ti-chevrons-right'></i>",
+        "previous": "<i class='ti ti-chevrons-left'></i>"
+    }
+}

@@ -1,0 +1,1 @@
+<x-link :href="route('admin.product_category.edit', $id)" :title="generate_text_depth_tree($depth).' '.$name" target="_blank"/>

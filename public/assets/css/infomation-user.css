@@ -1,0 +1,9 @@
+:root {
+    --color-gray: #9b9b9b !important;
+    --color-black: #3d3d3d !important;
+}
+
+section#infomation_user .information-orders .nav-tabs .nav-link.active {
+    border-bottom: 2px solid var(--color-hover) !important;
+    background: transparent !important;
+}

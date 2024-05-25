@@ -1,0 +1,1 @@
+{{ App\Enums\Product\ProductUnit::from($unit)->description() }}
