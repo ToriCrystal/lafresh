@@ -33,6 +33,6 @@
     "customer_email":"vui Lòng Nhập Email",
     "customer_phone":"Vui Lòng Nhập Số Điện Thoại",
     "shipping_address":"Vui Lòng nhập địa chỉ",
-    "shipping_method":"Vui Lòng Chọn mục thanh toán"
-
+    "shipping_method":"Vui Lòng Chọn mục thanh toán",
+    "slider_example": "Ví dụ (slider-1, slider-2, slider-3)"
 }

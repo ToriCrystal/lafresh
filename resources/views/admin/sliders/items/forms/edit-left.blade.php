@@ -15,7 +15,7 @@
             <!-- link -->
             <div class="col-12">
                 <div class="mb-3">
-                    <label class="control-label">{{ __('Link') }}:</label>
+                    <label class="control-label">{{ __('Link') }}: {{__('slider_example')}}</label>
                     <x-input name="link" :value="$sliderItem->link" :required="true"
                         placeholder="{{ __('link') }}" />
                 </div>

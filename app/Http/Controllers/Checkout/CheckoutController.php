@@ -83,7 +83,6 @@ class CheckoutController extends Controller
     public function pay($id, $qtyy, OrderRequest $request)
     {
         $order = $this->serviceOrder->createOrder($id, $qtyy, $request);
-
         return back()->with('success', 'Đã Lên Đơn Thành Công');
     }
 

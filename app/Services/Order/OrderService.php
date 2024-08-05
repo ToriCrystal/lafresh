@@ -18,7 +18,7 @@ class OrderService implements OrderServiceInterface
     }
 
     public function createOrder($productId, $qty, $request)
-    {
+    {   
         $data = $request->all();
         if ($request->input('shipping_method') == 'cod') {
             $data['shipping_method'] = OrderPaymentMethod::COD;

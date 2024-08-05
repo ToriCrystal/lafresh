@@ -42,41 +42,54 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        $filter = ['user_id' => auth()->user()->getIdOrder()];
-
-        if ($request->has('status')) {
-            $filter['status'] = $request->get('status');
-        }
-
-        $orders = $this->repository->paginate($filter, [], [], 5);
-        $productData = [];
-
-        foreach ($orders->items() as $value) {
-            $idOrders = $value->id;
-            $orderDetails = OrderDetail::where('order_id', $idOrders)->get();
-
-            foreach ($orderDetails as $orderDetail) {
-                $productId = $orderDetail->product_id;
-                $productData[$idOrders][] = [
-                    'product' => $this->repoProduct->find($productId),
-                    'qty' => $orderDetail->qty,
-                ];
+        try {
+            $filter = ['user_id' => auth()->user()->getIdOrder()];
+    
+            if ($request->has('status')) {
+                $filter['status'] = $request->get('status');
             }
+    
+            // Paginate orders
+            $orders = $this->repository->paginate($filter, [], [], 5);
+            $productData = [];
+    
+            foreach ($orders->items() as $value) {
+                $idOrders = $value->id;
+                $orderDetails = OrderDetail::where('order_id', $idOrders)->get();
+    
+                foreach ($orderDetails as $orderDetail) {
+                    $productId = $orderDetail->product_id;
+                    $productData[$idOrders][] = [
+                        'product' => $this->repoProduct->find($productId),
+                        'qty' => $orderDetail->qty,
+                    ];
+                }
+            }
+    
+            if ($request->ajax()) {
+                return response()->json([
+                    'html' => $this->renderItems($orders),
+                    'empty' => $orders->isEmpty()
+                ], 200);
+            }
+    
+            $breadcrums = [['label' => trans('Danh sách đơn hàng')]];
+            $status = OrderStatus::asSelectArray();
+    
+            return view($this->view['index'], compact('breadcrums', 'status', 'orders', 'productData'));
+            
+        } catch (\Exception $e) {
+            Log::error('Error in OrderController@index: ' . $e->getMessage());
+            
+            if ($request->ajax()) {
+                return response()->json(['error' => 'Something went wrong.'], 500);
+            }
+    
+            // Handle non-AJAX requests, e.g., show an error view
+            return view('errors.500');
         }
-
-        if ($request->ajax()) {
-            return response()->json([
-                'html' => $this->renderItems($orders),
-                'empty' => $orders->isEmpty()
-            ], 200);
-        }
-
-        $breadcrums = [['label' => trans('Danh sách đơn hàng')]];
-        $status = OrderStatus::asSelectArray();
-
-        return view($this->view['index'], compact('breadcrums', 'status', 'orders', 'productData'));
     }
-
+    
 
 
 

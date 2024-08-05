@@ -9,5 +9,5 @@ enum OrderShippingMethod: int
     use Enum;
 
     case Road = 1;
-    // case Air = 2;
+    case Air = 2;
 }

@@ -5,14 +5,14 @@
     <div class="card-header mb-3">
         <ul class="nav nav-tabs card-header-tabs nav-fill nav-order-status" data-bs-toggle="tabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <a href="{{ route('order.index') }}" class="nav-link active">
+                <a href="{{ route('order.index') }}" class="nav-link @if(request()->get('status') == null) active @endif">
                     @lang('Tất cả đơn')
                 </a>
             </li>
             @foreach ($status as $key => $value)
                 <li class="nav-item" role="presentation">
                     <a href="{{ route('order.index', ['status' =>$key]) }}" 
-                        class="nav-link" 
+                        class="nav-link @if(request()->get('status') == $key) active @endif" 
                     >
                         {{ $value }}
                     </a>

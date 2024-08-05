@@ -1,6 +1,6 @@
 <div class="mb-5">
     <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner active">
+        <div class="carousel-inner active" style="max-height: 600px">
             @if ($slider = $sliders->firstWhere('plain_key', config('custom.sliders.banner-1-slider')))
                 @foreach ($slider->items as $sliderItem)
                     <div @class(['carousel-item', 'active' => $loop->first]) data-bs-interval="2000">

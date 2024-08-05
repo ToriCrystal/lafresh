@@ -6,4 +6,5 @@ use App\Admin\Repositories\EloquentRepositoryInterface;
 
 interface PageRepositoryInterface extends EloquentRepositoryInterface
 {
+    public function findByOrFail($slug);
 }
